@@ -1,0 +1,96 @@
+<!-- bellow representes the list of social links of secialist  -->
+<div class="resume_item resume_social">
+    <div class="title">
+        <p class="bold">socila</p>
+    </div>
+    <ul>
+        <li>
+            <div class="icon">
+                <i class="fab fa-facebook"></i>
+            </div>
+            <div class="data">
+                {% if object.facebook_link %}
+                    <p class="semi_bold"> Facebook </p>
+                    <p>{{ object.facebook_link }}</p>
+                {% endif %}                
+            </div>
+        </li>
+        <li>
+            <div class="icon">
+                <i class="fab fa-telegram"></i>
+            </div>
+            <div class="data">
+                {% if object.telegram_link %}
+                    <p class="semi_bold"> Telegram </p>
+                    <p>{{ object.telegram_link }}</p>
+                {% endif %}                
+            </div>
+        </li>
+        <li>
+            <div class="icon">
+                <i class="fab fa-instagram-square"></i>
+            </div>
+            <div class="data">
+                {% if object.instagram_link %}
+                    <p class="semi_bold"> Instagram </p>
+                    <p>{{ object.instagram_link }}</p>
+                {% endif %}    
+            </div>
+        </li>
+        {% if object.whatsup_link %}
+        <li>
+            <div class="icon">
+                <i class="fab fa-instagram-square"></i>
+            </div>
+            <div class="data">
+                {% if object.whatsup_link %}
+                    <p class="semi_bold"> Whatsup </p>
+                    <p>{{ object.whatsup_link }}</p>
+                {% endif %}     
+            </div>
+        </li>
+        {% endif %}
+
+        {% if object.linkedin_link %}
+        <li>
+            <div class="icon">
+                <i class="fab fa-instagram-square"></i>
+            </div>
+            <div class="data">
+                {% if object.linkedin_link %}
+                    <p class="semi_bold"> LinkedIn </p>
+                    <p>{{ object.linkedin_link }}</p>
+                {% endif %} 
+            </div>
+        </li>
+        {% endif %}
+
+        {% if object.github_link %}
+        <li>
+            <div class="icon">
+                <i class="fab fa-instagram-square"></i>
+            </div>
+            <div class="data">
+                {% if object.github_link %}
+                    <p class="semi_bold"> GitHub </p>
+                    <p>{{ object.github_link }}</p>
+                {% endif %} 
+            </div>
+        </li>
+        {% endif %}   
+
+        {% if object.stackoverflow_link %}
+        <li>
+            <div class="icon">
+                <i class="fab fa-instagram-square"></i>
+            </div>
+            <div class="data">
+                {% if object.stackoverflow_link %}
+                    <p class="semi_bold"> Stack Overflow </p>
+                    <p>{{ object.stackoverflow_link }}</p>
+                {% endif %}
+            </div>
+        </li>
+        {% endif %}   
+    </ul>
+</div>

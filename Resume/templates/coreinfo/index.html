@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume/cv Design</title>
+    
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% comment %} <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"> {% endcomment %}
+
+</head>
+<body>
+    {% for object in object_list %}
+    <div class="resume">
+        <div class="resume_left">
+            <div class="resume_profile">
+                {% if object.user_image.url %}
+                    <img src="{{ object.user_image.url }}" alt="" alt="profile_pic">
+                {% else %}
+                    <img src="{% static 'images/anonymous-user.png' %}" alt="" alt="profile_pic">
+                {% endif %}
+            </div>
+            {% include "coreinfo/includes/user-contact.html" %}
+
+               {% include "coreinfo/includes/skills.html" %}
+                
+               {% include "coreinfo/includes/social-links.html" %}
+            </div>
+        </div>
+
+        <div class="resume_right">
+
+            <!-- bellow basic 'ABOUT ME' section -->
+            <div class="resume_item resume_about">
+                <div class="title">
+                    <p class="bold">About Me</p>
+                </div>
+                <p>{{ object.user_info|safe }}</p>
+            </div>
+
+            {% include "coreinfo/includes/experience.html" %}
+
+            {% include "coreinfo/includes/edu-train.html" %}
+
+            <!-- bellow basic 'Hobby' section -->
+            <div class="resume_item resume_hobby">
+                <div class="title">
+                    <p class="bold">Hobby</p>
+                </div>
+                <ul>
+                    <li><i class="fas fa-book" aria-hidden="true"></i></li>
+                    <li><i class="fas fa-swimmer" aria-hidden="true"></i></li>
+                    <li><i class="fas fa-music" aria-hidden="true"></i></li>
+                    <li><i class="fab fa-pagelines" aria-hidden="true"></i></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    {% endfor    %}
+</body>
+</html>

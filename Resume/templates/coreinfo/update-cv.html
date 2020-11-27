@@ -1,0 +1,74 @@
+<form enctype="multipart/form-data" action="" method="POST">
+{% csrf_token %}
+<!-- <table>{{ form.as_table }}</table> -->
+<!-- <ul>{{ form.as_ul }}</ul> -->
+<!-- {{ form.as_p }} -->
+
+{% if form %}
+    <table>
+        <tbody>
+            {# include the hidden fields #}
+            {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+            {% endfor %}
+
+            <!-- {# include the vizible fields #}
+            {% for visible in form.visible_fields %}
+            {{ visible }}
+            {% endfor %} -->
+
+            {{ form.non_field_errors }}
+            {% for form_obj in form %}
+                <tr>
+                    {% if form_obj.errors %}
+                    <ol>
+                        {% for error in form_obj.errors %}
+                            <li><p><strong>{{ error|escape }}</strong></p></li>
+                        {% endfor %}
+                        </ol> 
+                    {% endif %}
+                    
+                    <th><label for="{{ form_obj.id_for_label }}">{{ form_obj.label }}</label></th> 
+                    <td>{{ form_obj }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+{% for formset in formsets %}
+<table>
+    <tbody>
+        {# include the hidden fields #}
+        {% for hidden in formset.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
+
+        <!-- {# include the vizible fields #}
+        {% for visible in form.visible_fields %}
+        {{ visible }}
+        {% endfor %} -->
+        {{ formset.non_field_errors }}
+        {% for form_obj in formset %}
+            <tr>
+                {% if form_obj.errors %}
+                <ol>
+                    {% for error in form_obj.errors %}
+                        <li><p><strong>{{ error|escape }}</strong></p></li>
+                    {% endfor %}
+                    </ol> 
+                {% endif %}
+                
+                <th><label for="{{ form_obj.id_for_label }}">{{ form_obj.label }}</label></th> 
+                <td>{{ form_obj }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endfor %}
+{% endif %}
+
+
+<input type="submit" value="Change">
+</form>
+
+<!-- "html_name" = form field's name -->
